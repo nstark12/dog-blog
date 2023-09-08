@@ -4,6 +4,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
   try {
+    
     const postsPosted = await Post.findAll({
       include: [{ model: User }]
   })
@@ -12,6 +13,7 @@ router.get('/', withAuth, async (req, res) => {
   
   res.render('homepage', { posts, logged_in: req.session.logged_in })
 } catch(err) {
+  console.log(err)
   res.status(500).json(err)
 }
 });
