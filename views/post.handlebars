@@ -1,0 +1,18 @@
+<div class="container">
+<h1 class="my-5">{{posts.user.username}}'s Post</h1>
+
+    <div class="card text-center my-4" id="card">
+
+        <div class="card-body my-3">
+            <h5 class="card-title my-3 pb-3" id="post-title">{{posts.title}}</h5>
+            <p class="card-text my-3">{{posts.content}}</p>
+        </div>
+        <div class="card-footer" id="card-footer">Posted by: {{posts.user.username}} on {{format_date posts.createdAt}}</div>
+    </div>
+
+    {{> add-comment}}
+
+    {{> comments}}
+
+
+</div>

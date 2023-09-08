@@ -1,0 +1,21 @@
+{{#if logged_in}}
+
+<form class="card my-5" id="add-comment">
+    <div class="card-header p-3" id="card-header"><h3>Add New Comment</h3></div>
+
+    <div class="card-body d-flex flex-column p-3">
+        <input type="hidden" hidden="true" id="post-id" name="post_id" value="{{posts.id}}">
+        <label for="comment-body" class="form-label">Comment</label>
+        <textarea name="comment-body" id="comment-body" class="form-input"></textarea>
+
+        <button type="submit" class="search-btn log-in my-3">Submit</button>
+    </div>
+</form>
+
+{{else}}
+
+<button class="search-btn log-in my-3"><a href="/login">Log in to Comment</a></button>
+
+{{/if}}
+
+<script src="/js/comment.js"></script>

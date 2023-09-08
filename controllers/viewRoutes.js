@@ -18,6 +18,31 @@ router.get('/', withAuth, async (req, res) => {
 }
 });
 
+router.get('/posts/:id', async (req, res) => {
+  try {
+    const postsPosted = await Post.findOne({
+      where: {id: req.params.id},
+      include: [
+        User,
+        {
+          model: Comment,
+          include: [User]
+        }
+      ]
+    })
+
+    let posts = postsPosted.get({ plain: true })
+
+    res.render('post', {
+      posts,
+      logged_in: req.session.logged_in
+    })
+
+  } catch(err) {
+    res.status(500).json(err)
+  }
+})
+
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/');

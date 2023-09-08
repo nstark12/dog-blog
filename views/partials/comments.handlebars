@@ -1,0 +1,20 @@
+{{#if posts.comments}}
+<section class="card my-5" id="card">
+      <div class="card-header p-3" id="card-header">
+        <h3>Comments</h3>
+      </div>
+
+      <div class="card-body p-3">
+        {{#each posts.comments as |comments| }}
+          <div>
+            <p>
+              {{comments.content}}
+            </p>
+            <p>
+              &mdash; {{user.username}}, {{format_date createdAt}}
+            </p>
+          </div>
+        {{/each}}
+      </div>
+    </section>
+  {{/if}}
