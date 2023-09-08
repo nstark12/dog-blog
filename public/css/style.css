@@ -89,6 +89,22 @@ footer {
     justify-content: center;
 }
 
+/* -------------post styling------------- */
+#card {
+    border-color: var(--main);
+}
+
+#card-header {
+    background: var(--main);
+    color: white;
+}
+
+#card-footer {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: black;
+}
+
 /* -------------media queries------------- */
 
 @media(min-width: 1750px) {

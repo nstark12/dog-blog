@@ -1,0 +1,15 @@
+{{#each posts}}
+    <div class="card text-center my-4" id="card">
+    <div class="card-header" id="card-header">
+        Featured Post 
+    </div>
+
+    <div class="card-body my-3">
+        <h5 class="card-title"><a href="/posts/{{id}}" class="link-underline link-underline-opacity-0">{{title}}</a></h5>
+        <p class="card-text">{{content}}</p>
+    </div>
+    <div class="card-footer" id="card-footer">
+    Posted on: {{format_date createdAt}}
+    </div>
+    </div>
+{{/each}}
