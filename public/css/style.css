@@ -91,6 +91,17 @@ footer {
 
 /* -------------media queries------------- */
 
+@media(min-width: 1750px) {
+    #hero {
+        height: 750px;
+    }
+
+    button {
+        font-size: 30px;
+        border-radius: 30px;
+    }
+}
+
 @media(max-width: 620px) {
     #hero h2 {
         font-size: 40px;
