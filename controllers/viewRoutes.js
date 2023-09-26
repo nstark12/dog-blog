@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+
+
 router.get('/', withAuth, async (req, res) => {
   try {
     
@@ -79,7 +81,7 @@ router.get('/profile', async (req, res) => {
       raw: true
     })
 
-    const resumes = await Resume.findAll({
+    const posts = await Post.findAll({
       where: {
         user_id
       },
@@ -92,7 +94,7 @@ router.get('/profile', async (req, res) => {
       },
       raw: true
     })
-    res.render('profile', {...user, resumes, comments, logged_in: req.session.logged_in})
+    res.render('profile', {...user, posts, comments, logged_in: req.session.logged_in})
 
   } catch(err) {
     res.status(500).json(err)
@@ -101,7 +103,7 @@ router.get('/profile', async (req, res) => {
 
 router.get('/profile/:id', async (req, res) => {
   try{
-      const resume = await Resume.findByPk(req.params.id, {
+      const post = await Post.findByPk(req.params.id, {
           include: [{
               model: Comment,
               include: {
@@ -114,11 +116,11 @@ router.get('/profile/:id', async (req, res) => {
               attributes: ['username']
           }]
       })
-      const editResume = resume.get({
+      const editPost = post.get({
           raw: true
       })
       res.render('edit-delete', {
-          editResume
+          editPost
       })
   } catch(err) {
       res.status(500).json(err)

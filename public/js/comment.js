@@ -9,21 +9,37 @@ form.addEventListener('submit', (e) => {
         content: commentBody.value
     }
 
- 
-        fetch('/api/comment', {
-            method: 'POST',
+        fetch('/api/users/current', {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(commentData)
+            }
         })
         .then(response => {
-            if (response.status === 200) {
-                window.location.reload()
-
-            }
+            response.json().then(data => {
+                console.log('DATA =', data)
+                commentData.user_id = data.user_id
+                fetch('/api/comment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(commentData)
+                })
+                .then(response => {
+                    if (response.status === 200) {
+                        window.location.reload()
+        
+                    }
+                })
+                .catch(err => console.log(err))
+        
+        
+        })
+        
+            })
         })
         .catch(err => console.log(err))
 
-
-})
+ 
+       
