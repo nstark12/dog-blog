@@ -3,6 +3,8 @@
 ## Description
 This application is meant for dog lovers and dog owners to share their love and lessons for our furry friends. Users can read, post, and comment on blog posts all about dogs! 
 
+Application deployed through [Heroku](https://dog-blog-a03070a07329.herokuapp.com/login)
+
 ![screenshot](/public/assets/screenshot.png)
 
   ## Table of Contents
